@@ -1,0 +1,28 @@
+body{	
+		}
+		#ConvertedText{
+			height: 380px;
+			border: 1px solid #ccc;
+			padding: 10px;
+			box-shadow: 0 0 20px 0 #bbb;
+			margin-bottom: 30px;
+			font-size: 30px;
+			line-height: 25px;
+			border: 1.5px dotted #61A3F3; 
+		}
+		button{
+			position: absolute;
+			left: 42%;
+			top: 480px;
+			display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            outline: none;
+            color: #fff;
+            background-color: #00CB7A;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 6px #999;
+		}

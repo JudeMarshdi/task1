@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title>Speech to text Converter</title>
+	<link rel="stylesheet" href="cssCode.css"text/css>
+</head>
+<body> 
+	<h1 align="center">Speak to convert it into text</h1>
+	<div id="ConvertedText"></div>
+	<button onclick="Converting();">Press To Speak<i class="button" aria-hidden="true"></i></button>
+
+<script>
+		var ConvertedText = document.getElementById('ConvertedText');
+  
+		function Converting () {
+
+		if('webkitSpeechRecognition' in window) {
+			var speechRecognizer = new webkitSpeechRecognition();
+			speechRecognizer.lang = 'ar';
+			speechRecognizer.interimResults = true;
+			speechRecognizer.continuous = true;
+			
+			speechRecognizer.start();
+
+			var finalTranscripts = '';
+
+			speechRecognizer.onresult = function(Text) {
+				var interimTranscripts = '';
+				for(var i = Text.resultIndex; i < Text.results.length; i++){
+					var transcript = Text.results[i][0].transcript;
+					transcript.replace("\n", "<br>");
+					if(Text.results[i].isFinal) {
+						finalTranscripts += transcript;
+					}else{
+						interimTranscripts += transcript;
+					}
+				}
+				ConvertedText.innerHTML = finalTranscripts + '<span style="color: #a09ca7">' + interimTranscripts + '</span>';
+			};
+			speechRecognizer.onerror = function (Text) {
+			};
+		}else {
+			ConvertedText.innerHTML = 'Sorry speech recognition API not supported in your browser. Please download or Update Google chrome';
+		}	
+		}
+</script>	
+</body>
+</html>
